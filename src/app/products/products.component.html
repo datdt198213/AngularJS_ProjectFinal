@@ -1,0 +1,225 @@
+<section class="heading">
+  <div class="container">
+    <div class="heading__wrap">
+      <div class="heading__left">
+        <h3 style="text-transform: uppercase;">{{product.description}}</h3>
+      </div>
+      <div class="headding__right">
+        <span class="heading__right__current-position">Home
+          <i class="ti-angle-right"></i>
+          <span>{{product.category}}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="product-content__small-wrap" *ngFor="let x of counter(4),let i = index">
+          <div class="product-content__small-img" [ngStyle]="{'background-image': getURLByIndex(i)}"></div>
+        </div>
+
+      </div>
+      <div class="col-lg-5">
+        <div class="product-content__big-img" [ngStyle]="{'background-image': getURL(product.id)}"></div>
+      </div>
+      <div class="col-lg-5">
+        <div class="product-content__info">
+          <h3 class="product-content__info-heading">{{product.name}}</h3>
+          <div class="product-content__info-rate">
+            <span class="product-content__info-rate">
+              <i class="ti-star product-content__info-rate-icon" *ngFor="let rateTimes of counter(product.rate)"></i>
+            </span>
+
+            <span class="product-content__info-rate-quantity">{{product.quantity}}</span>
+            <span class="product-content__info-rate-reviews">{{product.review}} Reviews</span>
+          </div>
+          <p class="product-content__info-price">${{product.price}}</p>
+          <p class="product-content__info-nav">Category :
+            <span>{{product.description}} & {{product.category}}</span>
+          </p>
+          <p class="product-content__info-description">{{product.detail}}
+          </p>
+
+          <div class="product-content__infor-x">
+            <div class="product-content__info-select">
+              <span class="product-content__info-select-text"> {{mass}} Kg</span>
+              <i class="product-content__info-select-up ti-angle-up" (click)=increaseMass()></i>
+              <i class="product-content__info-select-down ti-angle-down" (click)=decreaseMass()></i>
+            </div>
+
+            <div class="product-content__info-btn" (click)="addProductToCart($event)">
+              <button class="product-content-btn-add">
+                <span>ADD TO CARD</span>
+                <div class="product-content-btn-add__wrap">
+                  <span class="product-content-btn-add__icon">+</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="product-content__info-tags">
+            <span>Tags</span>
+            <button class="product-content__info-tags-button">Template</button>
+            <button class="product-content__info-tags-button">Fresh</button>
+            <button class="product-content__info-tags-button">Capsicum</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product__evaluate">
+  <div class="container">
+    <div class="product__evaluate__button">
+      <button class="product__evaluate__button-description product__evaluate__button-active">Description</button>
+      <button class="product__evaluate__button-review">Review</button>
+    </div>
+
+    <div class="product__evaluate__preview hide">
+      <h3 class="product__evaluate__preview-heading">Product Decription</h3>
+      <p class="product__evaluate__preview-description">Duis aute irure dolor in reprehenderit in voluptate velit esse
+      </p>
+      <ul class="product__evaluate__preview-list">
+        <h4 class="product__evaluate__preview-feature-heading">Features</h4>
+        <li class="product__evaluate__preview-item">
+          <i class="product__evaluate__preview-item-icon far fa-check-circle"></i>
+          <span class="product__evaluate__preview-item-text">Duis aute irure dolor in reprehenderit in voluptate velit
+            esse </span>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="product__evaluate__review">
+      <h3 class="product__evaluate__review-heading">Review</h3>
+      <div class="product__evaluate__review-user">
+        <div class="product__evaluate__review-user-left">
+          <div class="product__evaluate__review-user-img" style="background-image: url('https://m.media-amazon.com/images/I/81Vr0-VQhOL.jpg');"></div>
+          <ul class="product__evaluate__review-user-rate">
+            <li>
+              <i class="fas fa-star"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="product__evaluate__review-user-right">
+          <div class="product__evaluate__review-user-name">Sara Palmer</div>
+          <div class="product__evaluate__review-user-comment">Dung la nguoi dung nuoc la</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="evaluate__review">
+
+    </div>
+  </div>
+</section>
+
+<section class="product__list">
+  <div class="container">
+    <div class="row product-gurter-y product-gurter-x">
+      <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12">
+        <div class="product">
+          <i class="product__icon ti-heart"></i>
+          <div class="product__img" style="background-image: url(./assets/img/224x163.png);">
+
+          </div>
+          <div class="product__text">
+            <span class="product__text_name">Banana</span>
+            <span class="product__text_description">FRESHFRUIT</span>
+            <span class="product__text_price">
+              <span>$20</span>
+            </span>
+          </div>
+          <button class="btn-add">
+            <span>ADD TO CARD</span>
+            <div class="btn-add__wrap">
+              <span class="btn-add__icon">+</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="product">
+          <i class="product__icon ti-heart"></i>
+          <div class="product__img" style="background-image: url(./assets/img/224x163.png);">
+
+          </div>
+          <div class="product__text">
+            <span class="product__text_name">Banana</span>
+            <span class="product__text_description">FRESHFRUIT</span>
+            <span class="product__text_price">
+              <span>$20</span>
+            </span>
+          </div>
+          <button class="btn-add">
+            <span>ADD TO CARD</span>
+            <div class="btn-add__wrap">
+              <span class="btn-add__icon">+</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="product">
+          <i class="product__icon ti-heart"></i>
+          <div class="product__img" style="background-image: url(./assets/img/224x163.png);">
+
+          </div>
+          <div class="product__text">
+            <span class="product__text_name">Banana</span>
+            <span class="product__text_description">FRESHFRUIT</span>
+            <span class="product__text_price">
+              <span>$20</span>
+            </span>
+          </div>
+          <button class="btn-add">
+            <span>ADD TO CARD</span>
+            <div class="btn-add__wrap">
+              <span class="btn-add__icon">+</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="product">
+          <i class="product__icon ti-heart"></i>
+          <div class="product__img" style="background-image: url(./assets/img/224x163.png);">
+          </div>
+          <div class="product__text">
+            <span class="product__text_name">Banana</span>
+            <span class="product__text_description">FRESHFRUIT</span>
+            <span class="product__text_price">
+              <span>$20</span>
+            </span>
+          </div>
+          <button class="btn-add">
+            <span>ADD TO CARD</span>
+            <div class="btn-add__wrap">
+              <span class="btn-add__icon">+</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="event">
+  <div class="event__wrap" style="background-image:url(./assets/img/1920x420.png) ;">
+    <div class="event__wrap__text">
+      <div>
+        <h3>Join our Event & make help us to farmer</h3>
+        <span>Over 25000 User and Farmer trust the MartPlace</span>
+      </div>
+    </div>
+    <div class="event__wrap__btn">
+      <button> <span>Join Now</span> </button>
+    </div>
+  </div>
+</section>

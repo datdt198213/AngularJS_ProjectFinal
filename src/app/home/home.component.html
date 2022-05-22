@@ -1,0 +1,317 @@
+<!-- Start main -->
+<main>
+  <!-- Start slide -->
+  <section class="slide">
+    <img src="https://wallpaperaccess.com/full/3632020.jpg" alt="" class="slide__img">
+    <div class="container">
+      <div class="slide__wrap">
+
+        <div class="slide__font">
+          <p>Welcome to Oomato market</p>
+          <span class="font__bold">Always best Fruits <br> For everyone</span>
+          <p class="slide__font__any">Anytimee - AnyWhere</p>
+          <button class="btn__shop">Shop now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End slide-->
+
+  <!-- Start organic fruit-->
+  <section class="product__list">
+    <div class="container">
+      <div class="row product-gurter-y product-gurter-x hide-overflow">
+        <ng-container *ngFor="let p of this.productListJuice, let i = index">
+          <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12" *ngIf="i < 4" (click)="setProduct(p)">
+            <div class="product">
+              <i class="product__icon far fa-heart product--color" (click)="heartClick($event)"></i>
+
+              <a [routerLink]="['product', p.id]">
+                <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                </div>
+                <div class="product__text">
+
+                  <span class="product__text_name">{{p.name}}</span>
+                  <span class="product__text_description">{{p.description}}</span>
+                  <span class="product__text_price">
+                    <span>${{p.price}}</span>
+                  </span>
+                </div>
+              </a>
+              <button class="btn-add" (click)=addProductToCart($event)>
+                <span>ADD TO CARD</span>
+                <div class="btn-add__wrap">
+                  <span class="btn-add__icon">+</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- End organic fruit-->
+
+  <!-- Start discount-->
+  <section class="discount">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="discount__summer">
+            <div class="discount__summer__wrap"
+              style="background-image: url('https://www.mckinsey.com/~/media/McKinsey/Industries/Retail/Our%20Insights/The%20secret%20to%20smarter%20fresh%20food%20replenishment%20Machine%20learning/Fresh-food_thumbnail_1536x1536_200_Standard.ashx?mw=1536&car=72:35&cq=50&tco=200');">
+              <div class="discount__font">
+                <span class="discount__font--bellada">Fresh</span>
+                <p class="discount__font__time">Summer sale</p>
+                <span class="discount__font__sale">40%</span>
+                <span class="discount__font__off">OFF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="discount__product">
+            <div class="row product-gurter-y product-gurter-x">
+              <ng-container *ngFor="let p of this.productListJuice, let i = index">
+                <div class="col-lg-6 col-md-12" (click)="setProduct(p)" *ngIf="i==0 && i < 1">
+                  <div class="product product--yellow">
+                    <i class="product__icon far fa-heart product--color"></i>
+                    <a [routerLink]="['product', p.id]">
+                      <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                      </div>
+                      <div class="product__text">
+                        <span class="product__text_name">{{p.name}}</span>
+                        <span class="product__text_description">{{p.description}}</span>
+                        <span class="product__text_price">
+                          <span>${{p.price}}</span>
+                        </span>
+                      </div>
+                    </a>
+                    <button class="btn-add" (click)=addProductToCart($event)>
+                      <span>ADD TO CARD</span>
+                      <div class="btn-add__wrap">
+                        <span class="btn-add__icon">+</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngFor="let p of this.productListJuice, let i = index">
+                <div class="col-lg-6 col-md-12" *ngIf="i ==1">
+                  <div class="product product--blue" (click)="setProduct(p)">
+                    <i class="product__icon far fa-heart product--color"></i>
+                    <a [routerLink]="['product', p.id]">
+                      <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                      </div>
+                      <div class="product__text">
+                        <span class="product__text_name">{{p.name}}</span>
+                        <span class="product__text_description">{{p.description}}</span>
+                        <span class="product__text_price">
+                          <span>${{p.price}}</span>
+                        </span>
+                      </div>
+                    </a>
+                    <button class="btn-add" (click)=addProductToCart($event)>
+                      <span>ADD TO CARD</span>
+                      <div class="btn-add__wrap">
+                        <span class="btn-add__icon">+</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="pre-order">
+      <div class="pre-order__img"
+        style="background-image: url('https://www.naturefresh.ca/wp-content/uploads/AdobeStock_90879003.jpeg');">
+        <div class="pre-order__info">
+          <h3 class="pre-order__heading">PRE-ORDER</h3>
+          <p class="pre-order__sale">50%
+            <span>OFF</span>
+          </p>
+          <span class="pre-order__times">FIRST ORDER</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End discount-->
+
+  <!-- Start organic fruit-->
+  <section class="product__list">
+    <div class="container">
+      <div class="row product-gurter-y product-gurter-x">
+        <ng-container *ngFor="let p of this.productListMeat, let i = index">
+          <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12" *ngIf="i<4" (click)="setProduct(p)">
+            <div class="product">
+              <i class="product__icon far fa-heart product--color" (click)="heartClick($event)"></i>
+              <a [routerLink]="['product', p.id]">
+                <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                </div>
+                <div class="product__text">
+                  <span class="product__text_name">{{p.name}}</span>
+                  <span class="product__text_description">{{p.description}}</span>
+                  <span class="product__text_price">
+                    <span>${{p.price}}</span>
+                  </span>
+                </div>
+              </a>
+              <button class="btn-add" (click)=addProductToCart($event)>
+                <span>ADD TO CARD</span>
+                <div class="btn-add__wrap">
+                  <span class="btn-add__icon">+</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- End organic fruit-->
+
+  <!-- Start banner -->
+  <section class="banner">
+    <div class="container">
+      <div class="banner__wrap">
+        <img
+          style="background-image: url('https://onlyveggies.net/wp-content/uploads/2020/05/Shaved-Spring-Salad-LEAD-5.jpg');"
+          alt="" class="banner__img">
+        <div class="banner__content">
+          <span>Only this String! The sale 50%</span>
+          <p class="banner__content__sale">Awesome total sale -50%</p>
+          <p class="banner__content__all">Off for all cosmetics kaline form only $25</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End banner -->
+
+  <!-- Start offer -->
+  <section class="product__list">
+    <div class="container">
+      <div class="row product-gurter-y product-gurter-x">
+        <ng-container *ngFor="let p of this.productListVegetable, let i = index">
+          <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12" (click)="setProduct(p)" *ngIf="i < 4">
+            <div class="product">
+              <i class="product__icon far fa-heart product--color" (click)="heartClick($event)"></i>
+              <a [routerLink]="['product', p.id]">
+                <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                </div>
+                <div class="product__text">
+                  <span class="product__text_name">{{p.name}}</span>
+                  <span class="product__text_description">{{p.description}}</span>
+                  <span class="product__text_price">
+                    <span>${{p.price}}</span>
+                  </span>
+                </div>
+              </a>
+              <button class="btn-add" (click)=addProductToCart($event)>
+                <span>ADD TO CARD</span>
+                <div class="btn-add__wrap">
+                  <span class="btn-add__icon">+</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- End offer-->
+
+  <!-- Start fresh juice-->
+  <section class="product__list blue">
+    <div class="container">
+      <div class="row product-gurter-y product-gurter-x">
+        <ng-container *ngFor="let p of this.productListHerb, let i = index">
+          <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12" (click)="setProduct(p)" *ngIf="i<4">
+            <div class="product">
+              <i class="product__icon far fa-heart product--color" (click)="heartClick($event)"></i>
+              <a [routerLink]="['product', p.id]">
+                <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                </div>
+                <div class="product__text">
+                  <span class="product__text_name">{{p.name}}</span>
+                  <span class="product__text_description">{{p.description}}</span>
+                  <span class="product__text_price">
+                    <span>${{p.price}}</span>
+                  </span>
+                </div>
+              </a>
+              <button class="btn-add" (click)="addProductToCart($event)">
+                <span>ADD TO CARD</span>
+                <div class="btn-add__wrap">
+                  <span class="btn-add__icon">+</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- End fresh juice-->
+
+  <!-- Start testimonial-->
+  <section class="testimonial">
+    <div class="container">
+      <div class="row product-gurter-y">
+        <ng-container *ngFor="let u of userList, let i = index">
+          <div class="col-lg-4 col-md-12 product-no-gurter-x" *ngIf="i<3">
+            <div class="testimonial__wrap">
+              <div class="testimonial__message">
+                <span class="testimonial__name">{{u.name}}</span>
+                <span class="testimonial_rate">
+                  <i class="ti-star testimonial__rate-icon" *ngFor="let rateTimes of counter(u.rate)"></i>
+                </span>
+                <p class="testimonial__description">{{u.description}}</p>
+              </div>
+              <div>
+                <img [ngStyle]="{'background-image': getUrlUser(u.id)}" class="testimonial__img" alt="">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- End testimonial-->
+
+  <!-- Start blog-->
+  <section class="blog">
+    <div class="container">
+      <div class="row product-gurter-y product-no-gurter-x">
+        <div class="col-lg-4 col-md-12 " *ngFor="let s of seasonList">
+          <div class="blog__w">
+            <div class="blog__wrap">
+              <div class="blog__content">
+                <span class="blog__content__date">{{s.time}}</span>
+                <span class="blog__content__topic">{{s.description}}
+                </span>
+              </div>
+              <a href="#" class="blog__link">
+                <span class="blog__link__wrap"> <span class="blog__link__text">Read more</span>
+                  <i class='ti-arrow-right blog__link__icon'></i>
+                </span>
+
+              </a>
+              <img [ngStyle]="{'background-image': getUrlSeason(s.id)}" alt="" class="blog__content__img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End blog -->
+
+</main>
+<!-- End main -->

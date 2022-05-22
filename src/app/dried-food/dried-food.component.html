@@ -1,0 +1,191 @@
+
+        <!-- Start main -->
+        <main>
+          <section class="heading">
+              <div class="container">
+                  <div class="heading__wrap">
+                      <div class="heading__left">
+                          <h3>Dried food</h3>
+                      </div>
+                      <div class="headding__right">
+                          <span class="heading__right__current-position">Home
+                              <i class="ti-angle-right"></i>
+                              <span>Dried food</span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <section class="content">
+              <div class="container">
+                  <div class="row category-gurter">
+                      <div class="col-3">
+                          <div class="category">
+                              <ul class="side-bar">
+                                  <h3 class="side-bar__heading">Categories</h3>
+                                  <li><a href="#"><span class="side-bar__text"> <span>Natural featured</span> <span
+                                                  class="side-bar__text__quantity">25</span> </span></a></li>
+                                  <li><a href="#"><span class="side-bar__text"> <span>Organic Farm Fruit</span> <span
+                                                  class="side-bar__text__quantity">40</span></span></a></li>
+                                  <li><a href="#"><span class="side-bar__text"> <span>Fresh Vegetable</span> <span
+                                                  class="side-bar__text__quantity">95</span></span></a></li>
+                                  <li><a href="#"><span class="side-bar__text"> <span>Juice</span> <span
+                                                  class="side-bar__text__quantity">12</span></span></a></li>
+                                  <li><a href="#"><span class="side-bar__text"> <span>On Offer</span> <span
+                                                  class="side-bar__text__quantity">60</span></span></a></li>
+                                  <li><a href="#"><span class="side-bar__text"> <span>Icons</span> <span
+                                                  class="side-bar__text__quantity">15</span></span></a></li>
+                                  <li><a href="#"><span class="side-bar__text"> <span>Mobile App Kit</span> <span
+                                                  class="side-bar__text__quantity">25</span></span></a></li>
+                              </ul>
+                          </div>
+                          <div class="filter">
+                              <ul class="side-bar">
+                                  <h3 class="side-bar__heading">Filter</h3>
+                                  <li>
+                                      <label class="side-bar__radio" for="bestMatch">
+                                          <div class="side-bar__text">
+                                              <input type="radio" name="filter" id="bestMatch">
+                                              <span class="side-bar__checkbox"></span>
+                                              <span class="filter__text">Best Match</span>
+                                              <span class="side-bar__text__quantity">25</span>
+                                          </div>
+                                      </label>
+                                  </li>
+                                  <li>
+                                      <label class="side-bar__radio" for="latestItem">
+                                          <div class="side-bar__text">
+                                              <input type="radio" name="filter" id="latestItem">
+                                              <span class="side-bar__checkbox"></span>
+                                              <span class="filter__text">Latest Item</span>
+                                              <span class="side-bar__text__quantity">12</span>
+                                          </div>
+                                      </label>
+                                  </li>
+                                  <li>
+                                      <label class="side-bar__radio" for="withOffer">
+                                          <div class="side-bar__text">
+                                              <input type="radio" name="filter" id="withOffer">
+                                              <span class="side-bar__checkbox"></span>
+                                              <span class="filter__text">With Offer</span>
+                                              <span class="side-bar__text__quantity">95</span>
+                                          </div>
+                                      </label>
+                                  </li>
+                                  <li>
+                                      <label class="side-bar__radio" for="highLow">
+                                          <div class="side-bar__text">
+                                              <input type="radio" name="filter" id="highLow">
+                                              <span class="side-bar__checkbox"></span>
+                                              <span class="filter__text">High Low</span>
+                                              <span class="side-bar__text__quantity">12</span>
+                                          </div>
+                                      </label>
+                                  </li>
+                                  <li>
+                                      <label class="side-bar__radio" for="lowHigh">
+                                          <div class="side-bar__text">
+                                              <input type="radio" name="filter" id="lowHigh">
+                                              <span class="side-bar__checkbox"></span>
+                                              <span class="filter__text">Low High</span>
+                                              <span class="side-bar__text__quantity">60</span>
+                                          </div>
+                                      </label>
+                                  </li>
+                              </ul>
+
+                          </div>
+                          <div class="price">
+                              <ul class="side-bar">
+                                  <h3 class="side-bar__heading">Price</h3>
+
+                                  <div class="price__range">
+                                          <input id="price-progress" class="price-progress" type="range" min="0" max="100" value="50"/>
+                                          <label for="price-progress">$5</label>
+                                          <label for="price-progress" style="margin-left: 20px;">$100</label>
+                                  </div>
+                              </ul>
+                          </div>
+                          <div class="sale">
+                              <div class="sale__wrap">
+                                  <div class="sale__text">
+                                      <h3>Awesome total sale-50%</h3>
+                                      <span>Off for all cosmetics kaline form only $25!</span>
+                                  </div>
+                                  <div class="sale__wrap__btn">
+                                      <button class="sale__btn">Shop Now</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-9">
+                          <div class="category-search">
+                              <input type="text" placeholder="Search your products">
+                              <button class="category-search__btn">Search</button>
+                          </div>
+                          <div class="row category-gurter">
+                              <div class="col-4" *ngFor="let p of productList">
+
+                                  <div class="product border">
+                                    <i class="product__icon ti-heart"></i>
+                                    <a [routerLink]="['product', p.id]">
+                                      <div class="product__img" [ngStyle]="{'background-image': getUrlProduct(p.id)}">
+                                      </div>
+                                      <div class="product__text">
+                                        <span class="product__text_name">{{p.name}}</span>
+                                        <span class="product__text_description">{{p.description}}</span>
+                                        <span class="product__text_price">
+                                          <span>${{p.price}}</span>
+                                        </span>
+                                      </div>
+                                    </a>
+                                    <button class="btn-add" (click)="addCart(p, $event)">
+                                      <span>ADD TO CARD</span>
+                                      <div class="btn-add__wrap">
+                                        <span class="btn-add__icon">+</span>
+                                      </div>
+                                    </button>
+                                  </div>
+                                </div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </section>
+
+          <!-- Start pagination -->
+          <section class="pagination">
+              <div class="pagination__wrap">
+                  <div class="pagination__number pagination__number--active">
+                      <span>1</span>
+                  </div>
+
+                  <div class="pagination__number">
+                      <span>...</span>
+                  </div>
+
+
+              </div>
+          </section>
+          <!-- End Pagination -->
+
+          <!-- Start event -->
+          <section class="event">
+              <div class="event__wrap" style="background-image:url(./assets/img/1920x420.png) ;">
+                  <div class="event__wrap__text">
+                      <div>
+                          <h3>Join our Event & make help us to farmer</h3>
+                          <span>Over 25000 User and Farmer trust the MartPlace</span>
+                      </div>
+                  </div>
+                  <div class="event__wrap__btn">
+                      <button> <span>Join Now</span> </button>
+                  </div>
+              </div>
+          </section>
+          <!-- End event -->
+
+      </main>
+      <!-- End main -->

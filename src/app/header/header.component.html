@@ -1,0 +1,568 @@
+<!-- Start header -->
+<header>
+  <!-- Start top bar -->
+  <section class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-5">
+          <div class="top-bar__welcome">
+            <span>Welcome to Oomato market online shoping</span>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-7">
+          <ul class="top-bar__list">
+            <li><a href="#"><span>Store Locations</span></a></li>
+            <li><a href="#"><span>Track Your Order</span></a></li>
+            <li><a href="#"><span>US Dollar</span></a></li>
+            <a href="#"><i class="ti-angle-down top-bar__icon"></i></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End top bar -->
+
+  <!-- Start middle bar -->
+  <section class="middle-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-4">
+          <div class="logo">
+            <img src="./assets/img/Leaves.png" class="logo___leaves" alt="">
+            <img src="./assets/img/Elipse.png" class="logo___elipse" alt="">
+            <span class="logo__text">
+              <span>O</span>omato
+              <p>Market</p>
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-5 col-xs-12 col-sm-12">
+          <div class="middle-bar__search">
+            <input type="text" class="middle-bar__search__input" placeholder="Enter your search">
+            <div class="middle-bar__search__select">
+              <h3>All<i class="ti-angle-down"></i></h3>
+              <ul class='middle-bar__search__list'>
+                <li><a href="#"><span>Home
+                    </span></a></li>
+                <li><a href="#"><span>Vegetables
+                    </span></a></li>
+                <li><a href="#"><span>Fruits
+                    </span></a></li>
+                <li><a href="#"><span>Meat
+                    </span></a></li>
+                <li><a href="#"><span>Dried Foods
+                    </span></a></li>
+                <li><a href="#"><span>Juic
+                    </span></a></li>
+                <li><a href="#"><span>Page
+                    </span></a></li>
+                <li><a href="#"><span>Blog
+                    </span></a></li>
+                <li><a href="#"><span>Contact us
+                    </span></a></li>
+              </ul>
+            </div>
+            <div class="middle-bar__search__button">
+              <button class="search__button">
+                <i class="ti-search"></i>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-6 col-sm-6">
+          <div class="middle-bar__left">
+            <div class="middle-bar__left__heart">
+              <a routerLink="/heart"></a>
+              <i class="ti-heart middle-bar__left__icon">
+                <span>{{this.heartService.numberElement}}</span>
+              </i>
+              <div class="middle-bar__left__product js-product-img-heart">
+
+                <div class="middle-bar__left__product__no-cart" [class.hide]="this.heartService.checkEmpty">
+                  <div [class.hide]="this.heartService.checkEmpty"></div>
+                  <span [class.hide]="this.heartService.checkEmpty">No item be added</span>
+                </div>
+                <div class="middle-bar__left__product__list">
+
+                  <li class="middle-bar__left__product__item" *ngFor="let h of heartList">
+                    <div class="middle-bar__left__product__item__img" [ngStyle]="{'background-image': getUrlHeart(h.id)}"></div>
+                    <div class="middle-bar__left__product__item__text">
+                      <h4>{{h.product.name}}</h4>
+                      <span>${{h.product.price}}</span>
+                    </div>
+                    <div class="middle-bar__left__product__item__close">
+                      <i class="ti-close" (click)="removeHeart(h.id)"></i>
+                    </div>
+                  </li>
+
+                </div>
+                <div class="middle-bar__left__product__total js-product-total-heart">
+                  <h4 class="">Subtotal</h4>
+                  <span>${{this.heartService.price}}</span>
+                </div>
+                <div class="middle-bar__left__product__btn js-product-btn-heart">
+                  <button class="middle-bar__left__product__btn--add">Add to cart</button>
+                  <button class="middle-bar__left__product__btn--check">Check Out</button>
+                </div>
+                <div class="middle-bar__left__rectangle"></div>
+              </div>
+            </div>
+            <div class="middle-bar__left__cart">
+              <a routerLink="/cart">
+                <i class="ti-bag middle-bar__left__icon">
+                  <span class="middle-bar__left__cart-icon">{{this.cartService.numberElement}}</span>
+                </i>
+              </a>
+              <div class="middle-bar__left__product js-product-img-cart">
+                <div class="middle-bar__left__product__no-cart" [class.hide]="this.cartService.checkEmpty">
+                  <div [class.hide]="this.cartService.checkEmpty"></div>
+                  <span [class.hide]="this.cartService.checkEmpty">No item be added</span>
+                </div>
+                <ul class="middle-bar__left__product__list">
+
+                  <li class="middle-bar__left__product__item" *ngFor="let c of cartList">
+                    <div class="middle-bar__left__product__item__img"
+                      [ngStyle]="{'background-image': getUrlCart(c.id)}"></div>
+                    <div class="middle-bar__left__product__item__text">
+                      <h4>{{c.product.name}}</h4>
+                      <span>${{c.product.price}} </span>
+                    </div>
+                    <div class="middle-bar__left__product__item__close">
+                      <i class="ti-close" (click)="removeCart(c.id)"></i>
+                    </div>
+                  </li>
+
+                </ul>
+                <div class="middle-bar__left__product__total js-product-total-cart">
+                  <h4 class="">Subtotal</h4>
+                  <span>${{this.cartService.price}}</span>
+                </div>
+                <div class="middle-bar__left__product__btn js-product-btn-cart">
+                  <button class="middle-bar__left__product__btn--add">Add to cart</button>
+                  <button class="middle-bar__left__product__btn--check">Check Out</button>
+                </div>
+                <div class="middle-bar__left__rectangle"></div>
+              </div>
+            </div>
+
+            <button class="middle-bar__left__btn">
+              <div class="middle-bar__left__btn__content">
+                <!-- <a href="#">Login</a>
+                              <span>/</span>
+                              <a href="#">Sign Up</a> -->
+                <i class="ti-user middle-bar__left__btn__content__user"></i>
+                <span class='middle-bar__left__btn__content__text'>Đặng Đạt</span>
+                <i class="ti-angle-down middle-bar__left__btn__content__down"></i>
+
+                <div class="middle-bar__left__box">
+                  <div class="middle-bar__left__box__info">
+                    <div class="middle-bar__left__rectangle"></div>
+                    <ul class="middle-bar__left__box__info__list">
+                      <h3 class="middle-bar__left__box__info__heading">
+                        <div class="middle-bar__left__box__info__heading-img"
+                          style="background-image: url(./assets/img/51x51.png);"></div>
+                        <p>Hello, Đặng Đạt</p>
+                      </h3>
+                      <li class="middle-bar__left__box__info__item"><a href=""><span>Affiliate Center</span></a> </li>
+                      <li class="middle-bar__left__box__info__item"><a href=""><span>Profile</span></a> </li>
+                      <li class="middle-bar__left__box__info__item"><a href=""><span>Purchase</span></a></li>
+                      <li class="middle-bar__left__box__info__item"><a href=""><span> Account Settings</span></a></li>
+                      <li class="middle-bar__left__box__info__item"><a href=""><span> Log Out </span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End middle bar -->
+
+  <!-- Start navigation bar -->
+  <nav class="nav-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-8">
+          <ul class="nav-bar__list">
+            <li> <a routerLink="/home"><span class=' nav-bar__item--active'>Home</span>
+              </a>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/vegetable" class="nav-bar__item__link">Vegetables</a>
+              <div class="nav-bar__item__interactive">
+                <span
+                  class="nav-bar__item__interactive__text nav-bar__item__interactive--offer  display-flex">Offer</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--hot">Hot</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--new">New</span>
+              </div>
+              <div class="nav-bar__item__box">
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/fruit" class="nav-bar__item__link">Fruits</a>
+              <div class="nav-bar__item__interactive">
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--offer">Offer</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--hot">Hot</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--new">New</span>
+              </div>
+              <div class="nav-bar__item__box">
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/meat" class="nav-bar__item__link">Meats </a>
+              <div class="nav-bar__item__interactive">
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--offer">Offer</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--hot  display-flex">Hot</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--new">New</span>
+              </div>
+              <div class="nav-bar__item__box">
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/dried" class="nav-bar__item__link"> <span>Dried Foods</span>
+                <div class="nav-bar__item__interactive">
+                  <span class="nav-bar__item__interactive__text nav-bar__item__interactive--offer">Offer</span>
+                  <span class="nav-bar__item__interactive__text nav-bar__item__interactive--hot">Hot</span>
+                  <span class="nav-bar__item__interactive__text nav-bar__item__interactive--new display-flex">New</span>
+                </div>
+              </a>
+
+              <div class="nav-bar__item__box">
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/juice" class="nav-bar__item__link">Juices</a>
+              <div class="nav-bar__item__interactive">
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--offer">Offer</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--hot">Hot</span>
+                <span class="nav-bar__item__interactive__text nav-bar__item__interactive--new ">New</span>
+              </div>
+              <div class="nav-bar__item__box">
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+                <ul>
+                  <div class="nav-bar__item__box__img" style="background-image: url(./assets/img/167x109.png);"></div>
+                  <h3>Vegetables</h3>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Avocados</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Frozed
+                        Vegetables</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Lettuce</span></a></li>
+                  <li><a href="#"><span class="nav-bar__item__box__text">Fresh
+                        Onions</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/pages" class="nav-bar__item__link">Pages</a>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/blog" class="nav-bar__item__link">Blog</a>
+            </li>
+            <li class="nav-bar__item">
+              <a routerLink="/contact" class="nav-bar__item__link">Contact us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <div class="nav-bar__left">
+            <button class="btn__seller">
+              <span>Become Seller</span>
+              <i class="btn__seller__img">
+                <img src="./assets/img/upload.png" alt="">
+              </i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+  <!-- End navigation bar -->
+
+  <!-- Top bar mobile -->
+  <div class="top-bar__mobile">
+    <label for="nav-mobile-input" class="top-bar__mobile__menu">
+      <i class="ti-menu top-bar__mobile__menu-icon"></i>
+    </label>
+
+    <label for="nav-mobile-user" class="top-bar__mobile__user">
+      <i class="ti-user top-bar__mobile__user-icon"></i>
+    </label>
+
+    <input type="checkbox" name="" hidden class="nav-mobile__input" id="nav-mobile-input">
+    <input type="checkbox" name="" hidden class="nav-mobile__user" id="nav-mobile-user">
+
+    <label for="nav-mobile-input" class="top-bar__mobile__overlay"></label>
+    <label for="nav-mobile-user" class="top-bar__mobile__overlay-1"></label>
+
+    <nav class="nav__mobile">
+      <ul class="nav__mobile-list">
+        <h3 class="nav__mobile-heading">List Product</h3>
+        <li><a href="" class="nav__mobile-link">Vegetables</a></li>
+        <li><a href="" class="nav__mobile-link">Fruits</a></li>
+        <li><a href="" class="nav__mobile-link">Meat</a></li>
+        <li><a href="" class="nav__mobile-link">Dried Foods</a></li>
+        <li><a href="" class="nav__mobile-link">Juices</a></li>
+        <h3 class="nav__mobile-heading">Interactive</h3>
+        <li><a href="" class="nav__mobile-link">Pages</a></li>
+        <li><a href="" class="nav__mobile-link">Blog</a></li>
+        <li><a href="" class="nav__mobile-link">Contact Us</a></li>
+      </ul>
+      <label for="nav-mobile-input" class="nav__mobile-close">
+        <i class="ti-close nav__mobile-close-icon"></i>
+      </label>
+    </nav>
+
+    <nav class="nav__mobile-user">
+
+      <ul class="nav__mobile-user-list">
+        <h3 class="nav__mobile-user-heading">
+          <div class="nav__mobile-user-heading-img" style="background-image: url(./assets/img/51x51.png);"></div>
+          <p>Hello, Đặng Đạt</p>
+        </h3>
+        <li><a href="" class='nav__mobile-user-link'>Affiliate Center</a> </li>
+        <li><a href="" class='nav__mobile-user-link'>Profile</a> </li>
+        <li><a href="" class='nav__mobile-user-link'>Purchase</a></li>
+        <li><a href="" class='nav__mobile-user-link'> Account Settings</a></li>
+        <li><a href="" class='nav__mobile-user-link'> Log Out </a></li>
+      </ul>
+      <label for="nav-mobile-user" class="nav__mobile-user-close">
+        <i class="ti-close nav__mobile-close-icon"></i>
+      </label>
+    </nav>
+  </div>
+</header>
+<!-- End header -->

@@ -1,0 +1,219 @@
+<section class="heading">
+  <div class="container">
+      <div class="heading__wrap">
+          <div class="heading__left">
+              <h3>Cart</h3>
+          </div>
+          <div class="headding__right">
+              <span class="heading__right__current-position">Home
+                  <i class="ti-angle-right"></i>
+                  <span>Cart</span>
+              </span>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="cart-info">
+  <div class="container">
+      <div class="row">
+          <div class="col-8">
+              <div class="cart-info__contact">
+                  <div class="cart-info__contact-heading">
+                      <h3>Contact Information</h3>
+                      <div class="cart-info__contact-left">
+                          <p class="cart-info__contact-already">Already have an account?  </p>
+                          <a class="cart-info__contact-link">Log in</a>
+
+                      </div>
+                  </div>
+                  <div class="cart-info__contact-input">
+                      <input type="email" placeholder="Email" class= "cart-info__contact-email">
+                      <input type="checkbox" id="cart-info__contact-input-checkbox">
+                      <label for="cart-info__contact-input-checkbox" class = "cart-info__contact-input-label">Keep me up to date on news and exclusive offers</label>
+                  </div>
+              </div>
+              <div class="cart-info__shipping">
+                  <h3 class="cart-info__shipping-heading">Shipping address</h3>
+                  <div class="cart-info__shipping-input">
+                      <div class="cart-info__shipping-name">
+                          <input type="text" placeholder="First name" class="cart-info__shipping-first-name">
+                          <input type="text" placeholder="Last name" class="cart-info__shipping-last-name">
+                      </div>
+                      <input type="text" placeholder="Address" class="cart-info__shipping-address">
+                      <input type="text" placeholder="Apartment,suit,etc" class="cart-info__shipping-apartment">
+                      <input type="text" placeholder="City" class="cart-info__shipping-city">
+                      <div class="cart-info__shipping-nation">
+                          <input type="text" placeholder="United State" class="cart-info__shipping-nation-name">
+                          <input type="text" placeholder="140023" class="cart-info__shipping-nation-id">
+
+                      </div>
+                      <input type="text" placeholder="Mobile no" class="cart-info__shipping-phone">
+                      <input type="checkbox" id="cart-info__shipping-checkbox" class="cart-info__shipping-checkbox">
+                      <label for="cart-info__shipping-checkbox" class = "cart-info__shipping-label">Save all my information</label>
+
+                  </div>
+              </div>
+
+              <div class="cart-info__button">
+                  <button class="cart-info__button-return">Return to cart</button>
+                  <button class="cart-info__button-payment">Continue To payment method</button>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="cart-info__product">
+                  <ul class="cart-info__product-list">
+                      <li class="cart-info__product-item" *ngFor="let c of cartList">
+                          <div class="cart-info__product-item-img" [ngStyle]="{'background-image': getUrlCart(c.id)}"></div>
+                          <span class="cart-info__product-item-name">{{c.product.name}}</span>
+                          <span class="cart-info__product-item-price">${{c.product.price}}</span>
+                      </li>
+
+                  </ul>
+                  <div class="cart-info__product-widget">
+                      <ul class="cart-info__product-widget-list">
+                          <li class="cart-info__product-widget-item">
+                              <span class="cart-info__product-widget-text">
+                                  Sub total
+                              </span>
+                              <span class="cart-info__product-widget-price">
+                                  ${{sub_total}}
+                              </span>
+                          </li>
+                          <li class="cart-info__product-widget-item">
+                              <span class="cart-info__product-widget-text">
+                                  Service charges
+                              </span>
+                              <span class="cart-info__product-widget-price">
+                                  ${{service_charges}}
+                              </span>
+                          </li>
+                          <li class="cart-info__product-widget-item">
+                              <span class="cart-info__product-widget-text">
+                                  Discount
+                              </span>
+                              <span class="cart-info__product-widget-price">
+                                  {{discount}}%
+                              </span>
+                          </li>
+                          <li class="cart-info__product-widget-item">
+                              <span class="cart-info__product-widget-text">
+                                  Total
+                              </span>
+                              <span class="cart-info__product-widget-price">
+                                  ${{total}}
+                              </span>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="product__list">
+  <div class="container">
+      <div class="row product-gurter-y product-gurter-x">
+          <div class="col-lg-3 col-md-6 col-xs-12 col-sm-12">
+              <div class="product">
+                  <i class="product__icon ti-heart"></i>
+                  <div class="product__img">
+
+                  </div>
+                  <div class="product__text">
+                      <span class="product__text_name">Banana</span>
+                      <span class="product__text_description">FRESHFRUIT</span>
+                      <span class="product__text_price">
+                          <span>$20</span>
+                      </span>
+                  </div>
+                  <button class="btn-add">
+                      <span>ADD TO CARD</span>
+                      <div class="btn-add__wrap">
+                          <span class="btn-add__icon">+</span>
+                      </div>
+                  </button>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="product">
+                  <i class="product__icon ti-heart"></i>
+                  <div class="product__img">
+
+                  </div>
+                  <div class="product__text">
+                      <span class="product__text_name">Banana</span>
+                      <span class="product__text_description">FRESHFRUIT</span>
+                      <span class="product__text_price">
+                          <span>$20</span>
+                      </span>
+                  </div>
+                  <button class="btn-add">
+                      <span>ADD TO CARD</span>
+                      <div class="btn-add__wrap">
+                          <span class="btn-add__icon">+</span>
+                      </div>
+                  </button>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="product">
+                  <i class="product__icon ti-heart"></i>
+                  <div class="product__img">
+
+                  </div>
+                  <div class="product__text">
+                      <span class="product__text_name">Banana</span>
+                      <span class="product__text_description">FRESHFRUIT</span>
+                      <span class="product__text_price">
+                          <span>$20</span>
+                      </span>
+                  </div>
+                  <button class="btn-add">
+                      <span>ADD TO CARD</span>
+                      <div class="btn-add__wrap">
+                          <span class="btn-add__icon">+</span>
+                      </div>
+                  </button>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+              <div class="product">
+                  <i class="product__icon ti-heart"></i>
+                  <div class="product__img">
+                  </div>
+                  <div class="product__text">
+                      <span class="product__text_name">Banana</span>
+                      <span class="product__text_description">FRESHFRUIT</span>
+                      <span class="product__text_price">
+                          <span>$20</span>
+                      </span>
+                  </div>
+                  <button class="btn-add">
+                      <span>ADD TO CARD</span>
+                      <div class="btn-add__wrap">
+                          <span class="btn-add__icon">+</span>
+                      </div>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</section>
+
+<section class="event">
+  <div class="event__wrap" style="background-image:url(./assets/img/1920x420.png) ;">
+      <div class="event__wrap__text">
+          <div>
+              <h3>Join our Event & make help us to farmer</h3>
+              <span>Over 25000 User and Farmer trust the MartPlace</span>
+          </div>
+      </div>
+      <div class="event__wrap__btn">
+          <button> <span>Join Now</span> </button>
+      </div>
+  </div>
+</section>
